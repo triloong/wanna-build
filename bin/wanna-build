@@ -637,7 +637,7 @@ sub add_packages {
 
         if ($actions->{$newstate} && $actions->{$newstate}->{'from'}) {
             if (!isin($pkg->{'state'}, @{$actions->{$newstate}->{'from'}}, @{$actions->{$newstate}->{'warnfrom'}})) {
-                print "$name: skiping: state is $pkg->{'state'}, not in ".join(", ",@{$actions->{$newstate}->{'from'}}, @{$actions->{$newstate}->{'warnfrom'}})."\n";
+                print "$name: skipping: state is $pkg->{'state'}, not in ".join(", ",@{$actions->{$newstate}->{'from'}}, @{$actions->{$newstate}->{'warnfrom'}})."\n";
                 next;
             }
         }
@@ -996,7 +996,7 @@ sub add_one_depwait {
 	}
 	
 	if (isin( $state, qw<Installed Not-For-Us>)) {
-            print "add_one_depwait: $name: skiping in state $state\n";
+            print "add_one_depwait: $name: skipping in state $state\n";
             return;
         }
         
