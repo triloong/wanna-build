@@ -134,6 +134,8 @@
     - architecture: ia64
 - lenz:
     - architecture: ia64
+- lifshitz:
+    - architecture: ia64
 - titanium:
     - architecture: ia64
 
