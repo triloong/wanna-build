@@ -45,9 +45,15 @@ main() {
     sync.sh $ARCHIVE nolock
 
     EXT="`get_index_extension ${SUITE}`"
-    SOURCES="${ARCHIVE_BASE}/archive/${SUITE}/updates/{main,contrib}/source/Sources${EXT}"
+    if [ "$SUITE" != "stretch" ] && [ "$SUITE" != " buster" ] ; then
+        SOURCES="${ARCHIVE_BASE}/archive/${SUITE}-security/{main,contrib}/source/Sources${EXT}"
+        PACKAGES="${ARCHIVE_BASE}/archive/${SUITE}-security/{main,contrib}/binary-%ARCH%/Packages${EXT}"
+    else
+        SOURCES="${ARCHIVE_BASE}/archive/${SUITE}/updates/{main,contrib}/source/Sources${EXT}"
+        PACKAGES="${ARCHIVE_BASE}/archive/${SUITE}/updates/{main,contrib}/binary-%ARCH%/Packages${EXT}"
+    fi
+
     SOURCES="${SOURCES} ${ARCHIVE_BASE}/debian-security-buildd-dists/buildd-${SUITE}/updates/{main,contrib}/source/Sources${EXT}"
-    PACKAGES="${ARCHIVE_BASE}/archive/${SUITE}/updates/{main,contrib}/binary-%ARCH%/Packages${EXT}"
     PACKAGES="${PACKAGES} ${ARCHIVE_BASE}/debian-security-buildd-dists/buildd-${SUITE}/updates/{main,contrib}/binary-%ARCH%/Packages${EXT}"
     trigger_wb_update "${SUITE}" "`get_architectures ${SUITE}-security`" "$SOURCES" "$PACKAGES" "${SUITE}-security"
 
