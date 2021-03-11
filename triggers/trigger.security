@@ -45,7 +45,7 @@ main() {
     sync.sh $ARCHIVE nolock
 
     EXT="`get_index_extension ${SUITE}`"
-    if [ "$SUITE" != "stretch" ] && [ "$SUITE" != " buster" ] ; then
+    if [ "$SUITE" != "stretch" ] && [ "$SUITE" != "buster" ] ; then
         SOURCES="${ARCHIVE_BASE}/archive/${SUITE}-security/{main,contrib}/source/Sources${EXT}"
         PACKAGES="${ARCHIVE_BASE}/archive/${SUITE}-security/{main,contrib}/binary-%ARCH%/Packages${EXT}"
 
