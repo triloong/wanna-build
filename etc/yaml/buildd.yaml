@@ -113,6 +113,8 @@
     - architecture: hppa
 - mx3210:
     - architecture: hppa
+- pacific:
+    - architecture: hppa
 - sibaris:
     - architecture: hppa
 
