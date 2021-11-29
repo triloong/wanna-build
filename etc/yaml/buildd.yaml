@@ -104,6 +104,14 @@
 # buildds for the debian-ports archive
 #
 
+- alpha-sc-01:
+    - architecture: alpha
+- alpha-sc-02:
+    - architecture: alpha
+- alpha-sc-03:
+    - architecture: alpha
+- alpha-sc-04:
+    - architecture: alpha
 - imago:
     - architecture: alpha
 - electro:
