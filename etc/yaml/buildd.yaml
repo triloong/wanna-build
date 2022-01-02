@@ -119,13 +119,21 @@
 - tsunami:
     - architecture: alpha
 
-- hpviz:
+- c8000:
     - architecture: hppa
 - mx3210:
     - architecture: hppa
 - pacific:
     - architecture: hppa
-- sibaris:
+- panama:
+    - architecture: hppa
+- paq:
+    - architecture: hppa
+- parisc:
+    - architecture: hppa
+- pasta:
+    - architecture: hppa
+- phantom:
     - architecture: hppa
 
 - mozart:
