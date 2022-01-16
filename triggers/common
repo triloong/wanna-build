@@ -67,6 +67,7 @@ trigger_wb_update() {
     echo "`date`: Processing ${ARCHIVE}/${SUITE} ..."
 
     keep-latest source $(eval echo ${SOURCES}) > Sources.${SUITE}
+    sed -i -e '/^Package: dpkg-repack/,/^$/d' Sources.${SUITE}
     for ARCH in ${ARCHS}; do
         keep-latest ${ARCH} $(eval echo $(echo ${PACKAGES} | sed -e 's/%ARCH%/${ARCH}/g')) > Packages.${SUITE}.${ARCH}
         : > Packages.${SUITE}.${ARCH}.build-essential
