@@ -14,11 +14,6 @@ priority:
             buster-backports: -200
             stretch-backports: -200
             stretch-backports-sloppy: -200
-        priority: 
-            required: 50
-            important: 40
-            standard: 30
-            optional: 5
         component:
             contrib: -10
             non-free: -20
