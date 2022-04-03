@@ -68,6 +68,8 @@
     - architecture: mipsel mips64el
 - mipsel-osuosl-04:
     - architecture: mipsel mips64el
+- mipsel-osuosl-05:
+    - architecture: mipsel mips64el
 - mipsel-sil-01:
     - architecture : mipsel mips64el
 - hasse:
