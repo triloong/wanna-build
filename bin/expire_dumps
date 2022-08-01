@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 # Copyright (C) 2007 Florian Reitmeir <florian@reitmeir.org>
 # Copyright (C) 2008 Joerg Jaspert <joerg@debian.org>
@@ -22,7 +22,7 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-# requires: python-dateutil
+# requires: python3-dateutil
 
 import glob, os, sys
 import time, datetime
@@ -95,27 +95,27 @@ def expire(rules, list):
 
     for file in list:
         if VERBOSE:
-            print "current file to expire: " + file['name']
-            print file['date']
+            print("current file to expire: " + file['name'])
+            print(file['date'])
 
         # check if rule applies
         if (file['date'] < (TODAY-rule['days'])):
             if VERBOSE:
-                print "move to next rule"
+                print("move to next rule")
             if t_rules:
                 rule = t_rules.pop(0)
 
         if (last['date'] - file['date']) < rule['interval']:
             if VERBOSE:
-                print "unlink file:" + file['name']
+                print("unlink file:" + file['name'])
             if PRINT:
-                print file['name']
+                print(file['name'])
             if not NOACTION:
                 os.unlink(file['name'])
         else:
             last = file
             if VERBOSE:
-                print "kept file:" + file['name']
+                print("kept file:" + file['name'])
 
 
 parser = OptionParser()
