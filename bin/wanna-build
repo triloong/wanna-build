@@ -820,6 +820,10 @@ sub add_one_building {
 			}
 		}
 	}
+	else {
+		$ok = 0;
+		$reason = "unknown package"
+	}
 	if ($ok) {
             if ($api < 1) {
 		my $ok = 'ok';
