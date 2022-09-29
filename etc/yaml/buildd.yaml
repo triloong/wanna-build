@@ -185,6 +185,10 @@
     - architecture: ppc64 powerpc
 - kapitsa:
     - architecture: ppc64 powerpc
+- debian-project-be-1:
+    - architecture: ppc64 powerpc
+- debian-project-be-2:
+    - architecture: ppc64 powerpc
 
 - rv-aurel32-01:
     - architecture: riscv64
