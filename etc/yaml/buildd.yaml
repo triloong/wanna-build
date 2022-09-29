@@ -170,17 +170,6 @@
 - vs93:
     - architecture: m68k
 
-- amaterasu:
-    - architecture: ppc64
-- izanagi:
-    - architecture: ppc64
-- izanami:
-    - architecture: ppc64
-- susanoo:
-    - architecture: ppc64
-- tsukuyomi:
-    - architecture: ppc64
-
 - blaauw:
     - architecture: ppc64 powerpc
 - kapitsa:
