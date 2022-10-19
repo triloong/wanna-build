@@ -72,8 +72,6 @@
     - architecture: s390x
 - ppc64el-osuosl-01:
     - architecture: ppc64el
-- ppc64el-unicamp-01:
-    - architecture: ppc64el
 - x86-conova-01:
     - architecture: all amd64 i386
 - x86-csail-01:
