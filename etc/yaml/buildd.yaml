@@ -107,7 +107,7 @@
 - tsunami:
     - architecture: alpha
 
--atlas:
+- atlas:
     - architecture: hppa
 - c8000:
     - architecture: hppa
