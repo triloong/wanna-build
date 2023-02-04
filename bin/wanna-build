@@ -2440,7 +2440,7 @@ sub parse_all_v3 {
         delete $pkg->{'binary_nmu_changelog'} unless $pkgs->{'binnmu'};
         delete $pkg->{'buildpri'};
         update_source_info({'pkg' => $pkg, 'action' => "--merge-v3: needs-build" , 'arch' => $arch, 'dist' => $distribution});
-        print "$logstr set to needs-builds\n" if $simulate || $verbose;
+        print "$logstr set to needs-build\n" if $simulate || $verbose;
     }
 
     foreach my $name (keys %$db) {
