@@ -68,12 +68,12 @@ main_sync() {
 
         SOURCES="${ARCHIVE_BASE}/archive/${SUITE}/{main,contrib}/source/Sources${EXT}"
         SOURCES="${SOURCES} ${ARCHIVE_BASE}/debian-buildd-dists/buildd-${SUITE}/{main,contrib}/source/Sources${EXT}"
-        NFSOURCES="${ARCHIVE_BASE}/archive/${SUITE}/non-free/source/Sources${EXT}"
+        NFSOURCES="${ARCHIVE_BASE}/archive/${SUITE}/non-free{,-firmware}/source/Sources${EXT}"
         PACKAGES="${ARCHIVE_BASE}/archive/${SUITE}/{main,contrib}/binary-%ARCH%/Packages${EXT}"
         PACKAGES="${PACKAGES} ${ARCHIVE_BASE}/archive/${SUITE}/{main,contrib}/debian-installer/binary-%ARCH%/Packages${EXT}"
         PACKAGES="${PACKAGES} ${ARCHIVE_BASE}/debian-buildd-dists/buildd-${SUITE}/{main,contrib}/binary-%ARCH%/Packages${EXT}"
         PACKAGES="${PACKAGES} ${ARCHIVE_BASE}/debian-buildd-dists/buildd-${SUITE}/{main,contrib}/debian-installer/binary-%ARCH%/Packages${EXT}"
-        NFPACKAGES="${ARCHIVE_BASE}/archive/${SUITE}/non-free/binary-%ARCH%/Packages${EXT}"
+        NFPACKAGES="${ARCHIVE_BASE}/archive/${SUITE}/non-free{,-firmware}/binary-%ARCH%/Packages${EXT}"
         NFPACKAGES="${NFPACKAGES} ${ARCHIVE_BASE}/archive/${SUITE}/non-free/debian-installer/binary-%ARCH%/Packages${EXT}"
         /srv/wanna-build/bin/filter-nonfree /srv/wanna-build/etc/non-free-include-list "`get_architectures $SUITE`" Sources.${SUITE}.non-free Packages.${SUITE}.%ARCH%.non-free ${NFSOURCES} . ${NFPACKAGES} || true
 
