@@ -37,4 +37,4 @@ list-order:
     needs-build: CWTn
     building: bn
 restrict:
-    component: main contrib non-free
+    component: main contrib non-free non-free-firmware
