@@ -1034,7 +1034,7 @@ BEGIN {
 	%sectval = ( 
 				 libs			=> -200,
 				 'debian-installer'	=> -199,
-				 base			=> -198,
+				 tasks			=> -198,
 				 devel			=> -197,
 				 kernel			=> -196,
 				 shells			=> -195,
@@ -1054,7 +1054,7 @@ BEGIN {
 				 web			=> -181,
 				 vcs			=> -180,
 				 doc			=> -179,
-				 localizations		=> -178,
+				 localization 		=> -178,
 				 interpreters		=> -177,
 				 ruby			=> -176,
 				 java			=> -175,
@@ -1085,12 +1085,17 @@ BEGIN {
 				 embedded		=> -150,
 				 php			=> -149,
 				 zope			=> -148,
+				 education		=> -147,
+				 introspection		=> -146,
+				 javascript		=> -145,
+				 metapackages		=> -144,
+				 rust			=> -143,
 	);
 	foreach my $i (keys %sectval) {
 		$sectval{"contrib/$i"} = $sectval{$i}+40;
 		$sectval{"non-free/$i"} = $sectval{$i}+80;
 	}
-	$sectval{'unknown'}	= -165;
+	$sectval{'unknown'}	= -142;
 
 }
 
