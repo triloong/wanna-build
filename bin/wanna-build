@@ -1093,6 +1093,7 @@ BEGIN {
 	);
 	foreach my $i (keys %sectval) {
 		$sectval{"contrib/$i"} = $sectval{$i}+40;
+		$sectval{"non-free-firmware/$i"} = $sectval{$i}+60;
 		$sectval{"non-free/$i"} = $sectval{$i}+80;
 	}
 	$sectval{'unknown'}	= -142;
