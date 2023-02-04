@@ -19,9 +19,9 @@ def check_source(srcoklist, srcs, fw):
     ret = []
     for f in srcs:
         if f.endswith('gz'):
-            f = subprocess.Popen('zcat %s' % (f), shell=True, stdout=subprocess.PIPE).stdout
+            f = subprocess.Popen('zcat %s' % (f), shell=True, executable='/bin/bash', stdout=subprocess.PIPE).stdout
         elif f.endswith('xz'):
-            f = subprocess.Popen('xzcat %s' % (f), shell=True, stdout=subprocess.PIPE).stdout
+            f = subprocess.Popen('xzcat %s' % (f), shell=True, executable='/bin/bash', stdout=subprocess.PIPE).stdout
         else:
             f = open(f, 'r')
         pkg = apt_pkg.TagFile(f)
@@ -43,9 +43,9 @@ def check_source(srcoklist, srcs, fw):
 def check_binary(ok, bins, fw):
     for f in bins:
         if f.endswith('gz'):
-            f = subprocess.Popen(f'zcat {f}', shell=True, stdout=subprocess.PIPE).stdout
+            f = subprocess.Popen(f'zcat {f}', shell=True, executable='/bin/bash', stdout=subprocess.PIPE).stdout
         elif f.endswith('xz'):
-            f = subprocess.Popen(f'xzcat {f}', shell=True, stdout=subprocess.PIPE).stdout
+            f = subprocess.Popen(f'xzcat {f}', shell=True, executable='/bin/bash', stdout=subprocess.PIPE).stdout
         else:
             f = open(f, 'r')
         pkg = apt_pkg.TagFile(f)
