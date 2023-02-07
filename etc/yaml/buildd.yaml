@@ -237,6 +237,8 @@
     - architecture: riscv64
 - rv-osuosl-02:
     - architecture: riscv64
+- rv-osuosl-03:
+    - architecture: riscv64
 - rv-rr44-01:
     - architecture: riscv64
 - rv-plct-01:
