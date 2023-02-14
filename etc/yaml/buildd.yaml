@@ -167,6 +167,8 @@
     - architecture: m68k
 - m68k-osuosl-01:
     - architecture: m68k
+- m68k-osuosl-02:
+    - architecture: m68k
 - vs90:
     - architecture: m68k
 - vs91:
@@ -279,6 +281,8 @@
 - sh4-gandi-02:
     - architecture: sh4
 - sh4-osuosl-01:
+    - architecture: sh4
+- sh4-osuosl-02:
     - architecture: sh4
 - tirpitz:
     - architecture: sh4
