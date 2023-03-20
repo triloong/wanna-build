@@ -169,6 +169,10 @@
     - architecture: m68k
 - m68k-osuosl-02:
     - architecture: m68k
+- m68k-osuosl-03:
+    - architecture: m68k
+- m68k-osuosl-04:
+    - architecture: m68k
 - vs90:
     - architecture: m68k
 - vs91:
