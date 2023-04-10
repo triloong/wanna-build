@@ -232,6 +232,10 @@
     - architecture: sh4
 - sh4-osuosl-02:
     - architecture: sh4
+- sh4-osuosl-03:
+    - architecture: sh4
+- sh4-osuosl-04:
+    - architecture: sh4
 - tirpitz:
     - architecture: sh4
 - vs94:
