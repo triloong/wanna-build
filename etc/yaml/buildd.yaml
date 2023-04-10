@@ -220,14 +220,6 @@
 - rv-plct-08:
     - architecture: riscv64
 
-- hiei:
-    - architecture: sh4
-- hyuga:
-    - architecture: sh4
-- ise:
-    - architecture: sh4
-- mutsu:
-    - architecture: sh4
 - sh4-do-01:
     - architecture: sh4
 - sh4-do-02:
