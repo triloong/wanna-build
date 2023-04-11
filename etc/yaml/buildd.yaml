@@ -173,14 +173,6 @@
     - architecture: m68k
 - m68k-osuosl-04:
     - architecture: m68k
-- vs90:
-    - architecture: m68k
-- vs91:
-    - architecture: m68k
-- vs92:
-    - architecture: m68k
-- vs93:
-    - architecture: m68k
 
 - blaauw:
     - architecture: ppc64 powerpc
@@ -237,14 +229,6 @@
 - sh4-osuosl-04:
     - architecture: sh4
 - tirpitz:
-    - architecture: sh4
-- vs94:
-    - architecture: sh4
-- vs95:
-    - architecture: sh4
-- vs96:
-    - architecture: sh4
-- vs97:
     - architecture: sh4
 
 - andi:
