@@ -2,8 +2,6 @@
 # buildds for the main archive
 #
 
-- antheil:
-    - architecture: armel armhf
 - arm-arm-01:
     - architecture: arm64 armhf armel
 - arm-arm-03:
@@ -58,11 +56,7 @@
     - architecture: mipsel mips64el
 - mipsel-sil-01:
     - architecture : mipsel mips64el
-- hasse:
-    - architecture: armhf armel
 - hartmann:
-    - architecture: armhf armel
-- henze:
     - architecture: armhf armel
 - hoiby:
     - architecture: armhf armel
