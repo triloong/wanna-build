@@ -227,8 +227,6 @@
 - tirpitz:
     - architecture: sh4
 
-- andi:
-    - architecture: sparc64
 - landau:
     - architecture: sparc64
 - nvg5120:
