@@ -237,6 +237,8 @@
     - architecture: sparc64
 - raverin:
     - architecture: sparc64
+- hertz:
+    - architecture: sparc64
 
 - frobozz:
     - architecture: x32
