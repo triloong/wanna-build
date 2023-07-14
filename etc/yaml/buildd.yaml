@@ -137,9 +137,6 @@
 - mahler:
     - architecture: hurd-i386
 
-- kamp:
-    - architecture: kfreebsd-amd64 kfreebsd-i386
-
 - iridium:
     - architecture: ia64
 - lenz:
