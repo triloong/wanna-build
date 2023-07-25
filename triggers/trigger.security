@@ -52,9 +52,11 @@ main() {
         NFPACKAGES="${ARCHIVE_BASE}/archive/${SUITE}-security/non-free{,-firmware}/binary-%ARCH%/Packages${EXT}"
 
         SOURCES="${SOURCES} ${ARCHIVE_BASE}/debian-security-buildd-dists/buildd-${SUITE}-security/{main,contrib}/source/Sources${EXT}"
-        NFSOURCES="${SOURCES} ${ARCHIVE_BASE}/debian-security-buildd-dists/buildd-${SUITE}-security/non-free{,-firmware}/source/Sources${EXT}"
+        NFSOURCES="${NFSOURCES} ${ARCHIVE_BASE}/debian-security-buildd-dists/buildd-${SUITE}-security/non-free{,-firmware}/source/Sources${EXT}"
         PACKAGES="${PACKAGES} ${ARCHIVE_BASE}/debian-security-buildd-dists/buildd-${SUITE}-security/{main,contrib}/binary-%ARCH%/Packages${EXT}"
-        NFPACKAGES="${PACKAGES} ${ARCHIVE_BASE}/debian-security-buildd-dists/buildd-${SUITE}-security/non-free{,-firmware}/binary-%ARCH%/Packages${EXT}"
+        NFPACKAGES="${NFPACKAGES} ${ARCHIVE_BASE}/debian-security-buildd-dists/buildd-${SUITE}-security/non-free{,-firmware}/binary-%ARCH%/Packages${EXT}"
+
+        /srv/wanna-build/bin/filter-nonfree /srv/wanna-build/etc/non-free-include-list "`get_architectures ${SUITE}-security`" "Sources.${SUITE}-security.non-free" "Packages.${SUITE}-security.%ARCH%.non-free" ${NFSOURCES} . ${NFPACKAGES} || true
     else
         SOURCES="${ARCHIVE_BASE}/archive/${SUITE}/updates/{main,contrib}/source/Sources${EXT}"
         PACKAGES="${ARCHIVE_BASE}/archive/${SUITE}/updates/{main,contrib}/binary-%ARCH%/Packages${EXT}"
