@@ -1,9 +1,9 @@
 arch <- c("amd64", "arm64", "armel", "armhf", "i386",
 	"mipsel", "mips64el",
-	"ppc64el", "s390x", "all")
+	"ppc64el", "riscv64", "s390x", "all")
 palette(c("black", "turquoise", "red", "OrangeRed", "cyan",
 	"violetred2","thistle4",
-	"springgreen4",	"salmon", "purple"))
+	"springgreen4",	"magenta", "salmon", "purple"))
 
 readdata <- function (file,start) {
 	t <- read.table(file,row.names=1,header=FALSE,
@@ -12,7 +12,8 @@ readdata <- function (file,start) {
 	"powerpc","pt","s390","st","amd64","amdt","sparc","spt","armel","aret",
 	"kfreebsd-amd64", "kfreebsd-amd64-t", "kfreebsd-i386", "kfreebsd-i386-t",
 	"armhf", "armhf-t", "s390x", "s390x-t", "arm64", "arm64-t",
-	"ppc64el", "ppc64el-t", "all", "allt","mips64el","mips64elt"))
+	"ppc64el", "ppc64el-t", "all", "allt","mips64el","mips64elt",
+	"riscv64", "riscv64t"))
 	ts(as.matrix(data.frame(
 	t[23]/t[24]*100, #amd64
 	t[37]/t[38]*100, #arm64
@@ -22,6 +23,7 @@ readdata <- function (file,start) {
 	t[17]/t[18]*100, #mipsel
 	t[43]/t[44]*100, #mips64el
 	t[39]/t[40]*100, #ppc64el
+	t[45]/t[46]*100, #riscv64
 	t[35]/t[36]*100, #s390x
 	t[41]/t[42]*100 #all
 	)),c(2001,start),frequency=365.25)
