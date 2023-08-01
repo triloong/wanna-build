@@ -1,8 +1,8 @@
 arch <- c("amd64", "arm64", "armel", "armhf", "i386",
-	"mips", "mipsel", "mips64el",
+	"mipsel", "mips64el",
 	"ppc64el", "s390x", "all")
 palette(c("black", "turquoise", "red", "OrangeRed", "cyan",
-	"magenta", "violetred2","thistle4",
+	"violetred2","thistle4",
 	"springgreen4",	"salmon", "purple"))
 
 readdata <- function (file,start) {
@@ -19,7 +19,6 @@ readdata <- function (file,start) {
 	t[27]/t[28]*100, #armel
 	t[33]/t[34]*100, #armhf
 	t[9]/t[10]*100, #i386
-	t[15]/t[16]*100, #mips
 	t[17]/t[18]*100, #mipsel
 	t[43]/t[44]*100, #mips64el
 	t[39]/t[40]*100, #ppc64el
