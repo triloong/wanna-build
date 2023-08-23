@@ -55,15 +55,19 @@ main() {
         NFSOURCES="${NFSOURCES} ${ARCHIVE_BASE}/debian-security-buildd-dists/buildd-${SUITE}-security/non-free{,-firmware}/source/Sources${EXT}"
         PACKAGES="${PACKAGES} ${ARCHIVE_BASE}/debian-security-buildd-dists/buildd-${SUITE}-security/{main,contrib}/binary-%ARCH%/Packages${EXT}"
         NFPACKAGES="${NFPACKAGES} ${ARCHIVE_BASE}/debian-security-buildd-dists/buildd-${SUITE}-security/non-free{,-firmware}/binary-%ARCH%/Packages${EXT}"
-
-        /srv/wanna-build/bin/filter-nonfree /srv/wanna-build/etc/non-free-include-list "`get_architectures ${SUITE}-security`" "Sources.${SUITE}.non-free" "Packages.${SUITE}.%ARCH%.non-free" ${NFSOURCES} . ${NFPACKAGES} || true
     else
         SOURCES="${ARCHIVE_BASE}/archive/${SUITE}/updates/{main,contrib}/source/Sources${EXT}"
+        NFSOURCES="${ARCHIVE_BASE}/archive/${SUITE}/updates/non-free/source/Sources${EXT}"
         PACKAGES="${ARCHIVE_BASE}/archive/${SUITE}/updates/{main,contrib}/binary-%ARCH%/Packages${EXT}"
+        NFPACKAGES="${ARCHIVE_BASE}/archive/${SUITE}/updates/non-free/binary-%ARCH%/Packages${EXT}"
 
         SOURCES="${SOURCES} ${ARCHIVE_BASE}/debian-security-buildd-dists/buildd-${SUITE}/updates/{main,contrib}/source/Sources${EXT}"
+        NFSOURCES="${NFSOURCES} ${ARCHIVE_BASE}/debian-security-buildd-dists/buildd-${SUITE}/updates/non-free/source/Sources${EXT}"
         PACKAGES="${PACKAGES} ${ARCHIVE_BASE}/debian-security-buildd-dists/buildd-${SUITE}/updates/{main,contrib}/binary-%ARCH%/Packages${EXT}"
+        NFPACKAGES="${NFPACKAGES} ${ARCHIVE_BASE}/debian-security-buildd-dists/buildd-${SUITE}/updates/non-free/binary-%ARCH%/Packages${EXT}"
     fi
+
+    /srv/wanna-build/bin/filter-nonfree /srv/wanna-build/etc/non-free-include-list "`get_architectures ${SUITE}-security`" "Sources.${SUITE}.non-free" "Packages.${SUITE}.%ARCH%.non-free" ${NFSOURCES} . ${NFPACKAGES} || true
 
     trigger_wb_update "${SUITE}" "`get_architectures ${SUITE}-security`" "$SOURCES" "$PACKAGES" "${SUITE}-security"
 
