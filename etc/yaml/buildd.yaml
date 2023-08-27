@@ -28,8 +28,6 @@
     - architecture: armhf armel
 - hartmann:
     - architecture: armhf armel
-- hoiby:
-    - architecture: armhf armel
 
 - eberlin:
     - architecture: mipsel mips64el
