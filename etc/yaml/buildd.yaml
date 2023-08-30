@@ -173,6 +173,12 @@
     - architecture: loong64
 - loong64-loongson-03:
     - architecture: loong64
+- loong64-loongson-04:
+    - architecture: loong64
+- loong64-loongson-05:
+    - architecture: loong64
+- loong64-loongson-06:
+    - architecture: loong64
 
 - ara5:
     - architecture: m68k
