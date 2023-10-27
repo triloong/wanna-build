@@ -143,6 +143,9 @@
 - phantom:
     - architecture: hppa
 
+- boralus:
+    - architecture: hurd-amd64
+
 - mozart:
     - architecture: hurd-i386
 - bach:
