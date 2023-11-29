@@ -68,6 +68,10 @@
     - architecture: riscv64
 - rv-manda-02:
     - architecture: riscv64
+- rv-manda-03:
+    - architecture: riscv64
+- rv-manda-04:
+    - architecture: riscv64
 - rv-osuosl-01:
     - architecture: riscv64
 - rv-osuosl-02:
