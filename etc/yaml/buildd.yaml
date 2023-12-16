@@ -56,10 +56,15 @@
 - mipsel-sil-01:
     - architecture : mipsel mips64el
 
+- ppc64el-conova-01:
+    - architecture: ppc64el
+- ppc64el-conova-02:
+    - architecture: ppc64el
 - ppc64el-osuosl-01:
     - architecture: ppc64el
 - ppc64el-osuosl-02:
     - architecture: ppc64el
+
 - rv-manda-01:
     - architecture: riscv64
 - rv-manda-02:
