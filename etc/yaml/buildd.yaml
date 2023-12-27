@@ -31,14 +31,6 @@
 - hartmann:
     - architecture: armhf armel
 
-- eberlin:
-    - architecture: mipsel mips64el
-- mipsel-manda-01:
-    - architecture: mipsel mips64el
-- mipsel-manda-02:
-    - architecture: mipsel mips64el
-- mipsel-manda-03:
-    - architecture: mipsel mips64el
 - mipsel-manda-04:
     - architecture: mipsel mips64el
 - mipsel-manda-05:
