@@ -76,6 +76,16 @@ trigger_wb_update() {
         if [ "$SUITE" == "buster" ] || [ "$SUITE" = "bullseye" ] || [ "$SUITE" = "bookworm" ] ; then
             grep-dctrl -F Build-Essential -i yes -s Package,Version,Priority,Section,Architecture < Packages.${SUITE}.${ARCH} | sed -e '/^Version/ s,$,+build-essential,' >> Packages.${SUITE}.${ARCH}.build-essential
         fi
+        # Workaround dak #915948 combined with linux #1063020
+        if [ "$SUITE" = "sid" ] ; then
+            cat << EOF >> Packages.${SUITE}.${ARCH}.build-essential
+Package: linux-libc-dev
+Version: 6.6.13-1+build-essential
+Priority: optional
+Section: devel
+Architecture: all
+EOF
+        fi
     done
     [ -f Packages.${SUITE}.i386.non-free ] && PNF="Packages.${SUITE}.%ARCH%.non-free" || PNF=""
     [ -f Sources.${SUITE}.non-free ] && SNF="Sources.${SUITE}.non-free" || SNF=""
