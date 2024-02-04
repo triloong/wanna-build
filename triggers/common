@@ -70,12 +70,6 @@ trigger_wb_update() {
     for ARCH in ${ARCHS}; do
         keep-latest ${ARCH} $(eval echo $(echo ${PACKAGES} | sed -e 's/%ARCH%/${ARCH}/g')) > Packages.${SUITE}.${ARCH}
         : > Packages.${SUITE}.${ARCH}.build-essential
-        for pkg in perl ; do
-            grep-dctrl -S -s Package,Version,Priority,Section,Architecture -X $pkg < Packages.${SUITE}.${ARCH} | sed -e '/^Version/ s,$,+build-essential,' >> Packages.${SUITE}.${ARCH}.build-essential
-        done
-        for pkg in make binutils dpkg-dev; do
-            grep-dctrl -S -s Package,Version,Priority,Section,Architecture -X $pkg < Packages.${SUITE}.${ARCH} | sed -e '/^Version/ s,$,+build-essential,' >> Packages.${SUITE}.${ARCH}.build-essential
-        done
         grep-dctrl -F Priority required -s Package,Version,Priority,Section,Architecture < Packages.${SUITE}.${ARCH} | sed -e '/^Version/ s,$,+build-essential,' >> Packages.${SUITE}.${ARCH}.build-essential
         grep-dctrl -F Essential -i yes -s Package,Version,Priority,Section,Architecture < Packages.${SUITE}.${ARCH} | sed -e '/^Version/ s,$,+build-essential,' >> Packages.${SUITE}.${ARCH}.build-essential
         grep-dctrl -F Build-Essential -i yes -s Package,Version,Priority,Section,Architecture < Packages.${SUITE}.${ARCH} | sed -e '/^Version/ s,$,+build-essential,' >> Packages.${SUITE}.${ARCH}.build-essential
