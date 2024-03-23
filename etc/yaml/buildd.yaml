@@ -129,6 +129,8 @@
     - architecture: hppa
 - pad:
     - architecture: hppa
+- paladin:
+    - architecture: hppa
 - paq:
     - architecture: hppa
 - parisc:
