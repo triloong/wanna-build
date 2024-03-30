@@ -77,9 +77,9 @@
     - architecture: riscv64
 
 - x86-grnet-03:
--    - architecture: all amd64 i386
+    - architecture: all amd64 i386
 - x86-grnet-04:
--    - architecture: all amd64 i386
+    - architecture: all amd64 i386
 
 - zandonai:
     - architecture: s390x
