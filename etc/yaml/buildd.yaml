@@ -76,10 +76,26 @@
 - rv-osuosl-05:
     - architecture: riscv64
 
+- x86-csail-02:
+    - architecture: all
+- x86-grnet-02:
+    - architecture: all
+- x86-conova-01:
+    - architecture: all amd64 i386
+- x86-conova-02:
+    - architecture: all amd64 i386
+- x86-csail-01:
+    - architecture: amd64 i386
+- x86-grnet-01:
+    - architecture: amd64 i386
 - x86-grnet-03:
     - architecture: all amd64 i386
 - x86-grnet-04:
     - architecture: all amd64 i386
+- x86-ubc-01:
+    - architecture: amd64 i386
+- x86-ubc-02:
+    - architecture: amd64 i386
 
 - zandonai:
     - architecture: s390x
