@@ -158,15 +158,6 @@
 - mahler:
     - architecture: hurd-i386
 
-- iridium:
-    - architecture: ia64
-- lenz:
-    - architecture: ia64
-- lifshitz:
-    - architecture: ia64
-- titanium:
-    - architecture: ia64
-
 - loong64-osuosl-01:
     - architecture: loong64
 - loong64-osuosl-02:
