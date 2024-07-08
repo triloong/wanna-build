@@ -118,8 +118,6 @@
     - architecture: alpha
 - electro:
     - architecture: alpha
-- tsunami:
-    - architecture: alpha
 
 - atlas:
     - architecture: hppa
