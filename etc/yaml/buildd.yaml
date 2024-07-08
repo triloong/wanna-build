@@ -158,10 +158,6 @@
 - mahler:
     - architecture: hurd-i386
 
-- loong64-osuosl-01:
-    - architecture: loong64
-- loong64-osuosl-02:
-    - architecture: loong64
 - loong64-loongson-01:
     - architecture: loong64
 - loong64-loongson-02:
