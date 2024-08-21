@@ -23,11 +23,11 @@
 - arm-ubc-03:
     - architecture: arm64 armhf armel
 - arm-ubc-04:
-    - architecture: armhf armel
+    - architecture: arm64 armhf armel
 - arm-ubc-05:
-    - architecture: armhf armel
+    - architecture: arm64 armhf armel
 - arm-ubc-06:
-    - architecture: armhf armel
+    - architecture: arm64 armhf armel
 
 - mipsel-manda-04:
     - architecture: mipsel mips64el
