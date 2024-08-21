@@ -28,8 +28,6 @@
     - architecture: armhf armel
 - arm-ubc-06:
     - architecture: armhf armel
-- hartmann:
-    - architecture: armhf armel
 
 - mipsel-manda-04:
     - architecture: mipsel mips64el
