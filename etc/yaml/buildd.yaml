@@ -2,12 +2,6 @@
 # buildds for the main archive
 #
 
-- arm-arm-01:
-    - architecture: arm64 armhf armel
-- arm-arm-03:
-    - architecture: arm64 armhf armel
-- arm-arm-04:
-    - architecture: arm64 armhf armel
 - arm-conova-01:
     - architecture: arm64 armhf armel
 - arm-conova-02:
