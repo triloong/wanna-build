@@ -986,7 +986,7 @@ sub set_one_buildpri {
 	} else {
 		delete $pkg->{$key};
 	}
-	update_source_info({'pkg' => $pkg, 'action' => '--build-priority', 'arch' => $s->{'arch'}, 'dist' => $s->{'dist'}});
+	update_source_info({'pkg' => $pkg, 'action' => "--build-priority $build_priority", 'arch' => $s->{'arch'}, 'dist' => $s->{'dist'}});
 	print "$name: set to build priority $build_priority\n" if $verbose;
 }
 
