@@ -23,10 +23,6 @@
 - arm-ubc-06:
     - architecture: arm64 armhf armel
 
-- mipsel-manda-04:
-    - architecture: mipsel mips64el
-- mipsel-manda-05:
-    - architecture: mipsel mips64el
 - mipsel-osuosl-01:
     - architecture: mipsel mips64el
 - mipsel-osuosl-02:
