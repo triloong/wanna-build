@@ -117,6 +117,8 @@
     - architecture: hppa
 - pacific:
     - architecture: hppa
+- paco:
+    - architecture: hppa
 - panama:
     - architecture: hppa
 - pad:
