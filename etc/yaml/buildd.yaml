@@ -136,6 +136,8 @@
 
 - boralus:
     - architecture: hurd-amd64
+- hurd-dbdd-tls-1:
+    - architecture: hurd-amd64
 
 - mozart:
     - architecture: hurd-i386
