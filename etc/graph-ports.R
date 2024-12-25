@@ -1,12 +1,13 @@
-arch <- c("alpha", "hppa", "hurd-i386", "ia64", "loong64", "m68k", "powerpc", "ppc64", "sh4", "sparc64", "x32")
-palette(c("yellow", "violet", "purple", "springgreen4", "tomato", "blue", "steelblue2", "green", "black", "orange", "turquoise"))
+arch <- c("alpha", "hppa", "hurd-amd64", "hurd-i386", "ia64", "loong64", "m68k", "powerpc", "ppc64", "sh4", "sparc64", "x32")
+palette(c("yellow", "violet", "deeppink3", "purple", "springgreen4", "tomato", "blue", "steelblue2", "green", "black", "orange", "turquoise"))
 
 readdata <- function (file,start) {
 	t <- read.table(file,row.names=1,header=FALSE,
-	sep=",",col.names=c("date","alpha","at","hppa","ht","ia64","it","m68k","m6t","ppc64","p64","rv64","rt","sh4","sht","sparc64","spt","x32","xt","hurd-i386","hit","kfreebsd-amd64","kfreebsd-amd64-t","kfreebsd-i386","kfreebsd-i386-t","powerpc","pt","loong64","loong64t"))
+	sep=",",col.names=c("date","alpha","at","hppa","ht","ia64","it","m68k","m6t","ppc64","p64","rv64","rt","sh4","sht","sparc64","spt","x32","xt","hurd-i386","hit","kfreebsd-amd64","kfreebsd-amd64-t","kfreebsd-i386","kfreebsd-i386-t","powerpc","pt","loong64","loong64t","hurd-amd64","hat"))
 	ts(as.matrix(data.frame(
 	t[1]/t[2]*100, #alpha
 	t[3]/t[4]*100, #hppa
+	t[29]/t[30]*100, #hurd-amd64
 	t[19]/t[20]*100, #hurd-i386
 	t[5]/t[6]*100, #ia64
 	t[27]/t[28]*100, #loong64
