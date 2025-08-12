@@ -2,20 +2,20 @@
 priority:
     keys:
         distribution:
+            trixie-security: 400
             bookworm-security: 400
-            bullseye-security: 400
-            buster-security: 300
-            buster: 200
+            bullseye-security: 300
             bullseye: 200
-            bookworm: 100
+            bookworm: 200
+            trixie: 100
             sid: 0
             experimental: -100
+            trixie-backports: -200
+            trixie-backports-sloppy: -200
             bookworm-backports: -200
             bookworm-backports-sloppy: -200
             bullseye-backports: -200
             bullseye-backports-sloppy: -200
-            buster-backports: -200
-            buster-backports-sloppy: -200
         component:
             contrib: -10
             non-free: -20
