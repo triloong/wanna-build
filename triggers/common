@@ -70,11 +70,11 @@ trigger_wb_update() {
     for ARCH in ${ARCHS}; do
         keep-latest ${ARCH} $(eval echo $(echo ${PACKAGES} | sed -e 's/%ARCH%/${ARCH}/g')) > Packages.${SUITE}.${ARCH}
         : > Packages.${SUITE}.${ARCH}.build-essential
-        grep-dctrl -F Priority required -s Package,Version,Priority,Section,Architecture < Packages.${SUITE}.${ARCH} | sed -e '/^Version/ s,$,+build-essential,' >> Packages.${SUITE}.${ARCH}.build-essential
+        grep-dctrl -F Build-Essential -i yes -s Package,Version,Priority,Section,Architecture < Packages.${SUITE}.${ARCH} | sed -e '/^Version/ s,$,+build-essential,' >> Packages.${SUITE}.${ARCH}.build-essential
         grep-dctrl -F Essential -i yes -s Package,Version,Priority,Section,Architecture < Packages.${SUITE}.${ARCH} | sed -e '/^Version/ s,$,+build-essential,' >> Packages.${SUITE}.${ARCH}.build-essential
         # Required is not installed anymore for the buildd variant since debootstrap 1.0.133
         if [ "$SUITE" == "buster" ] || [ "$SUITE" = "bullseye" ] || [ "$SUITE" = "bookworm" ] ; then
-            grep-dctrl -F Build-Essential -i yes -s Package,Version,Priority,Section,Architecture < Packages.${SUITE}.${ARCH} | sed -e '/^Version/ s,$,+build-essential,' >> Packages.${SUITE}.${ARCH}.build-essential
+            grep-dctrl -F Priority required -s Package,Version,Priority,Section,Architecture < Packages.${SUITE}.${ARCH} | sed -e '/^Version/ s,$,+build-essential,' >> Packages.${SUITE}.${ARCH}.build-essential
         fi
     done
     [ -f Packages.${SUITE}.i386.non-free ] && PNF="Packages.${SUITE}.%ARCH%.non-free" || PNF=""
