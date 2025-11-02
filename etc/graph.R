@@ -1,8 +1,6 @@
-arch <- c("amd64", "arm64", "armel", "armhf", "i386",
-	"mipsel", "mips64el",
+arch <- c("amd64", "arm64", "armhf", "i386",
 	"ppc64el", "riscv64", "s390x", "all")
-palette(c("black", "turquoise", "red", "OrangeRed", "cyan",
-	"violetred2","thistle4",
+palette(c("black", "turquoise", "OrangeRed", "cyan",
 	"springgreen4",	"magenta", "salmon", "purple"))
 
 readdata <- function (file,start) {
@@ -17,11 +15,8 @@ readdata <- function (file,start) {
 	ts(as.matrix(data.frame(
 	t[23]/t[24]*100, #amd64
 	t[37]/t[38]*100, #arm64
-	t[27]/t[28]*100, #armel
 	t[33]/t[34]*100, #armhf
 	t[9]/t[10]*100, #i386
-	t[17]/t[18]*100, #mipsel
-	t[43]/t[44]*100, #mips64el
 	t[39]/t[40]*100, #ppc64el
 	t[45]/t[46]*100, #riscv64
 	t[35]/t[36]*100, #s390x
