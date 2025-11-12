@@ -88,6 +88,10 @@ our $api = undef; # allow buildds to specify an different api
 our $defaultapi = undef;
 our $recorduser = undef;
 
+our $interest_package_groups = {};
+our $allow_or_deny = '';
+our $interest_packages = {};
+
 # global vars
 $ENV{'PATH'} = "/bin:/usr/bin:/usr/local/bin:$conf::wbdir/bin/";
 $ENV{'LC_ALL'} = 'C';
@@ -278,6 +282,24 @@ if ($ARGV[0] && $ARGV[0] eq '--ssh-wrapper') {
         syslog("debug", "%s: %s", ($hostdefaults->{'host'}, $ENV{'SSH_ORIGINAL_COMMAND'}));
     }
     $defaultapi = 0;
+
+	if (defined $hostdefaults->{'filter'}) {
+		if (defined $hostdefaults->{'filter'}->{'allow'} and defined $hostdefaults->{'filter'}->{'deny'}) {
+			die("cannot have both allow and deny filters");
+		}
+		my $filterlist;
+		if (defined $hostdefaults->{'filter'}->{'allow'}) {
+			$filterlist = $hostdefaults->{'filter'}->{'allow'};
+			$allow_or_deny = 'allow';
+		} elsif (defined $hostdefaults->{'filter'}->{'deny'}) {
+			$filterlist = $hostdefaults->{'filter'}->{'deny'};
+			$allow_or_deny = 'deny';
+		}
+		foreach my $group (@$filterlist) {
+			$interest_package_groups->{$group} = 1;
+		}
+	}
+
 } else {
     GetOptions(@wannabuildoptions) or usage();
     $defaultapi = 1;
@@ -425,6 +447,18 @@ $list_order = $yamlmap->{"list-order"}{$list_state} if !$list_order and $list_st
 $list_order ||= $yamlmap->{"list-order"}{'default'};
 $api //= $yamlmap->{"api"};
 $api //= $defaultapi;
+
+if (defined $yamlmap->{"package-groups"}) {
+	foreach my $group (keys %{$yamlmap->{"package-groups"}}) {
+		if (not defined $interest_package_groups->{$group}) {
+			next;
+		}
+		my $pkgs = $yamlmap->{"package-groups"}->{$group};
+		foreach my $pkg (@$pkgs) {
+			$interest_packages->{$pkg} = 1;
+		}
+	}
+}
 
 if (isin($op_mode, qw<forget-user merge-v3 import>) && @conf::admin_users && !isin( $real_user, @conf::admin_users) && !$simulate ) {
     die "This operation is restricted to admin users";
@@ -1304,6 +1338,10 @@ sub list_packages {
                 @list = grep { $_->{'package'} ne $key } @list;
             }
         }
+
+		if ($s->{'state'} eq 'needs-build' && $allow_or_deny) {
+			@list = grep { (defined $interest_packages->{$_->{'package'}}) eq ($allow_or_deny eq 'allow') } @list;
+		}
 
         # first adjust ownprintformat, then set printformat accordingly
         $printformat ||= $yamlmap->{"format"}{$ownprintformat} if $ownprintformat;
