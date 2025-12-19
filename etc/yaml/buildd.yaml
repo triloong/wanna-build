@@ -23,6 +23,19 @@
 - arm-ubc-06:
     - architecture: arm64 armhf armel
 
+- loongson-conova-01:
+    - architecture: loong64
+- loongson-conova-02:
+    - architecture: loong64
+- loongson-conova-03:
+    - architecture: loong64
+- loongson-conova-04:
+    - architecture: loong64
+- loongson-conova-05:
+    - architecture: loong64
+- loongson-conova-06:
+    - architecture: loong64
+
 - mipsel-conova-01:
     - architecture: mipsel mips64el
 - mipsel-conova-02:
