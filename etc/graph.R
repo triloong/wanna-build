@@ -1,6 +1,6 @@
-arch <- c("amd64", "arm64", "armhf", "i386",
+arch <- c("amd64", "arm64", "armhf", "i386", "loong64",
 	"ppc64el", "riscv64", "s390x", "all")
-palette(c("black", "turquoise", "OrangeRed", "cyan",
+palette(c("black", "turquoise", "OrangeRed", "cyan", "yellow2",
 	"springgreen4",	"magenta", "salmon", "purple"))
 
 readdata <- function (file,start) {
@@ -11,12 +11,13 @@ readdata <- function (file,start) {
 	"kfreebsd-amd64", "kfreebsd-amd64-t", "kfreebsd-i386", "kfreebsd-i386-t",
 	"armhf", "armhf-t", "s390x", "s390x-t", "arm64", "arm64-t",
 	"ppc64el", "ppc64el-t", "all", "allt","mips64el","mips64elt",
-	"riscv64", "riscv64t"))
+	"riscv64", "riscv64t", "loong64", "loong64t"))
 	ts(as.matrix(data.frame(
 	t[23]/t[24]*100, #amd64
 	t[37]/t[38]*100, #arm64
 	t[33]/t[34]*100, #armhf
 	t[9]/t[10]*100, #i386
+	t[47]/t[48]*100, #loong64
 	t[39]/t[40]*100, #ppc64el
 	t[45]/t[46]*100, #riscv64
 	t[35]/t[36]*100, #s390x
