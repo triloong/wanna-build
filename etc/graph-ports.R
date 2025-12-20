@@ -1,5 +1,5 @@
-arch <- c("alpha", "hppa", "hurd-amd64", "hurd-i386", "ia64", "m68k", "powerpc", "ppc64", "sh4", "sparc64", "x32")
-palette(c("yellow", "violet", "deeppink3", "purple", "springgreen4", "blue", "steelblue2", "green", "black", "orange", "turquoise"))
+arch <- c("alpha", "hppa", "hurd-amd64", "hurd-i386", "m68k", "powerpc", "ppc64", "sh4", "sparc64", "x32")
+palette(c("yellow", "violet", "deeppink3", "purple", "blue", "steelblue2", "green", "black", "orange", "turquoise"))
 
 readdata <- function (file,start) {
 	t <- read.table(file,row.names=1,header=FALSE,
@@ -9,7 +9,6 @@ readdata <- function (file,start) {
 	t[3]/t[4]*100, #hppa
 	t[29]/t[30]*100, #hurd-amd64
 	t[19]/t[20]*100, #hurd-i386
-	t[5]/t[6]*100, #ia64
 	t[7]/t[8]*100, #m68k
 	t[25]/t[26]*100, #powerpc
 	t[9]/t[10]*100, #ppc64
