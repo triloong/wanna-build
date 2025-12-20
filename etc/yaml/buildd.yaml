@@ -29,11 +29,11 @@
     - architecture: loong64
 - loongson-conova-03:
     - architecture: loong64
-- loongson-conova-04:
+- loongson-tecnico-01:
     - architecture: loong64
-- loongson-conova-05:
+- loongson-tecnico-02:
     - architecture: loong64
-- loongson-conova-06:
+- loongson-tecnico-03:
     - architecture: loong64
 
 - mipsel-conova-01:
