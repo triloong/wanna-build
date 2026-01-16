@@ -1,0 +1,185 @@
+#!/bin/bash
+# vim:set et ts=4 sw=4 ft=sh ai:
+
+ARCHIVE="trixie-loong64"
+
+. /srv/wanna-build/triggers/common
+
+exec > >(tee -a "/srv/wanna-build/logs/merge.$ARCHIVE.log") 2>&1
+
+if [ -f /srv/wanna-build/NO-TRIGGERS -a -z "$1" ]; then
+    echo "Trigger for $ARCHIVE skipped due to NO-TRIGGERS, aborting." >&2
+    exit 0
+fi
+
+echo "$(date): Running trigger for $ARCHIVE ..."
+
+download_file(){
+    local url="$1"
+    local path="$2"
+    local dest="$3"
+
+    local curl_opts=(
+        --silent
+        --show-error
+        --fail
+        --location
+        --retry 5
+        --retry-connrefused
+        --remote-time
+        --create-dirs
+        --output "$dest/$path.tmp"
+    )
+    if [ -e "$dest/$path" ]; then
+        curl_opts+=(--time-cond "$dest/$path")
+    fi
+    echo "Trying to download $url/$path to $dest/$path" >&2
+    if curl "${curl_opts[@]}" "$url/$path"; then
+        if [ -e "$dest/$path.tmp" ]; then
+            mv "$dest/$path.tmp" "$dest/$path"
+        fi
+    	echo "$url/$path unchanged" >&2
+    else
+        local rc=$?
+        rm -f "$dest/$path.tmp"
+        if [ $rc -eq 22 ]; then
+	    echo "$url/$path removed on upstream, removing ours" >&2
+            rm -f "$dest/$path"
+            rc=0
+        fi
+        return $rc
+    fi
+}
+
+download_release(){
+    local repo_url="$1"
+    local suite="$2"
+    local dest_dir="$3"
+
+    download_file "$repo_url/dists" "${suite}/Release" "$dest_dir"
+}
+
+download_packages(){
+    local repo_url="$1"
+    local suite="$2"
+    local component="$3"
+    local arch="$4"
+    local ext="$5"
+    local dest_dir="$6"
+
+    if [ "$arch" = "source" ]; then
+        local file_url="${component}/source/Sources${ext}"
+    else
+        local file_url="${component}/binary-${arch}/Packages${ext}"
+    fi
+
+    local release_file="${dest_dir}/${suite}/Release"
+    if ! grep "$file_url\$" "$release_file" >/dev/null 2>&1; then
+        echo "$file_url not found in $release_file, removing ours" >&2
+        rm -f "${dest_dir}/${file_url}"
+        return 0
+    fi
+    download_file "$repo_url/dists" "${suite}/$file_url" "$dest_dir"
+}
+
+download_repo() {
+    local repo_url="$1"
+    local suites="$2"
+    local components="$3"
+    local archs="$4"
+    local dest_dir="$5"
+    local ext="$6"
+
+    for suite in $suites; do
+        if ! download_release "$repo_url" "$suite" "$dest_dir"; then
+            rm -rf "${dest_dir}/${suite}"
+            continue
+        fi
+        for arch in $archs; do
+            for component in $components; do
+                download_packages "$repo_url" "$suite" "$component" "$arch" "$ext" "$dest_dir"
+                if [ "$arch" != "source" ]; then
+                    download_packages "$repo_url" "$suite" "$component/debian-installer" "$arch" "$ext" "$dest_dir"
+                fi
+            done
+        done
+    done
+}
+
+filter_existing() {
+    for file in "$@"; do
+        if [ -f "$file" ]; then
+            echo "$file"
+        fi
+    done
+}
+
+unpack_index() {
+    local arch=$1
+    shift
+    while [ "$#" -gt 0 ]; do
+        case "$1" in 
+	    *.gz)
+                zcat "$1"
+	        ;;
+            *.xz)
+                xzcat "$1"
+		;;
+            *.bz)
+	        bzcat "$1"
+	        ;;
+	    *.zst)
+	        zstdcat "$1"
+	        ;;
+	    *)
+	        cat "$1"
+                ;;
+        esac
+	shift
+    done
+}
+
+
+main_sync() {
+    ensure_lock
+    ensure_workdir
+
+    download_repo "https://deb.debian.org/debian" "trixie" "main contrib non-free non-free-firmware" "all source" "${ARCHIVE_BASE}/master" ".gz"
+    download_repo "http://deb.internal.apernet.io/builds1" "trixie" "main contrib non-free non-free-firmware" "loong64" "${ARCHIVE_BASE}/builds1" ".gz"
+    download_repo "http://deb.internal.apernet.io/rebootstrap" "rebootstrap" "main" "loong64" "${ARCHIVE_BASE}/rebootstrap" ".gz"
+    download_repo "http://deb.internal.apernet.io/seeds" "trixie-seeds" "main" "loong64" "${ARCHIVE_BASE}/seeds" ".gz"
+
+    local SOURCES="$(echo "${ARCHIVE_BASE}"/master/trixie/{main,contrib}/source/Sources.gz)"
+    local NFSOURCES="$(echo "${ARCHIVE_BASE}"/master/trixie/non-free{,-firmware}/source/Sources.gz)"
+    local BASEPACKAGES="$(echo "${ARCHIVE_BASE}"/master/trixie/{main,contrib}{,/debian-installer}/binary-all/Packages.gz)"
+    BASEPACKAGES="$BASEPACKAGES ${ARCHIVE_BASE}/rebootstrap/rebootstrap/main/binary-loong64/Packages.gz"
+    BASEPACKAGES="$BASEPACKAGES ${ARCHIVE_BASE}/seeds/trixie-seeds/main/binary-loong64/Packages.gz"
+    local PACKAGES="$(echo "${ARCHIVE_BASE}"/builds1/trixie/{main,contrib}{,/debian-installer}/binary-loong64/Packages.gz)"
+    local NFPACKAGES="$(echo "${ARCHIVE_BASE}"/builds1/trixie/non-free{,-firmware}{,/debian-installer}/binary-loong64/Packages.gz)"
+
+    for i in SOURCES NFSOURCES BASEPACKAGES PACKAGES NFPACKAGES; do
+        declare -n ref="$i"
+        ref="$(filter_existing $ref)"
+    done
+
+    /srv/wanna-build/bin/filter-nonfree /srv/wanna-build/etc/non-free-include-list "loong64" "Sources.trixie.non-free" "Packages.trixie.loong64.non-free" ${NFSOURCES} . ${NFPACKAGES} || true
+    keep-latest source $SOURCES > Sources.trixie
+    keep-latest loong64 $PACKAGES > Packages.trixie.loong64
+    keep-latest loong64 Packages.trixie.loong64 $BASEPACKAGES > Packages.trixie.loong64-avail
+    local PNF
+    local SNF
+    [ -f Sources.trixie.non-free ] && SNF=Sources.trixie.non-free
+    [ -f Packages.trixie.loong64.non-free ] && PNF=Packages.trixie.loong64.non-free
+    wanna-build -v --merge-v3 -A loong64 --dist=trixie Packages.trixie.loong64 $PNF . Sources.trixie $SNF . \
+        Packages.trixie.loong64-avail
+}
+
+main() {
+    set -eE
+    trap cleanup ERR TERM HUP INT QUIT
+    main_sync
+    cleanup
+}
+main
+echo "$(date): Done trigger for $ARCHIVE" >&2
+exit 0
