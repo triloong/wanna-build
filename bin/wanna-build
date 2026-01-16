@@ -517,7 +517,7 @@ undef $distribution if $distribution eq 'any';
                             # Installed sources of the base suite: only add them as related, not
                             # installed; skip the entries if we got something in installed
                             # sources already.
-                            my $psrcs = WB::QD::readsourcebins($arch, $Pas, \@psrcs, []);
+                            my $psrcs = WB::QD::readsourcebins($arch, $Pas, \@psrcs, \@ipkgs);
                             foreach my $k (keys %$$psrcs) {
                                 next if $$srcs->{$k};
                                 my $pkg = $$psrcs->{$k};
@@ -2458,8 +2458,7 @@ sub parse_all_v3 {
             print "$logstr package in unknown state: $pkgs->{'status'}\n";
             next SRCS;
         }
-        next if $pkgs->{'version'} eq $pkg->{'version'} and $pkgs->{'binnmu'}//0 >= int($pkg->{'binary_nmu_version'}//0);
-        next if $pkgs->{'version'} eq $pkg->{'version'} and !isin( $pkg->{'state'}, qw(Installed));
+	next if $pkgs->{'version'} eq $pkg->{'version'};
         next if isin( $pkg->{'state'}, qw(Not-For-Us Failed-Removed));
 
         change_state( \$pkg, 'Needs-Build');
