@@ -1,0 +1,8 @@
+
+CREATE ROLE wbadm2;
+ALTER ROLE wbadm2 WITH NOSUPERUSER INHERIT CREATEROLE CREATEDB LOGIN;
+
+GRANT wb_all, wb_security TO wbadm2 with ADMIN OPTION;
+
+GRANT wb_all TO wbadm2 GRANTED BY wbadm2;
+
