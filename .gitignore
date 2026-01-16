@@ -10,3 +10,4 @@ etc/non-free-include-list
 etc/logrotate.status
 etc/yaml/buildd_mipsel-rem.yaml
 etc/yaml/buildd_mipsel-test.yaml
+etc/telegram.conf

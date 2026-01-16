@@ -8,6 +8,7 @@ priority:
             bullseye: 200
             bookworm: 200
             trixie: 100
+            trixie-proposed-updates: 100
             sid: 0
             experimental: -100
             trixie-backports: -200
@@ -38,3 +39,105 @@ list-order:
     building: bn
 restrict:
     component: main contrib non-free non-free-firmware
+package-groups:
+    virt:
+      - hwloc
+      - keyutils
+      - libaio
+      - liblinux-prctl-perl
+      - rust-kvm-ioctls
+      - util-linux
+      - strace
+      - flatpak
+    slow:
+      - lz4-java
+    timing-race:
+      - check
+      - mbuffer
+    large-space:
+      - ceph
+      - trilinos
+      - rustc
+    small-nofile:
+      - python-pybedtools
+      - libexplain
+    haskell-boot:
+       - haskell-hadrian
+       - haskell-shake
+       - haskell-unordered-containers
+       - haskell-microlens-ghc
+       - haskell-file-embed
+       - haskell-filepattern
+       - haskell-heaps
+       - haskell-js-dgtable
+       - haskell-js-flot
+       - haskell-js-jquery
+       - haskell-primitive
+       - haskell-utf8-string
+       - haskell-nothunks
+       - haskell-tasty
+       - haskell-tasty-hunit
+       - haskell-tasty-quickcheck
+       - haskell-microlens
+       - haskell-http
+       - haskell-hedgehog
+       - haskell-tasty-hedgehog
+       - haskell-vector
+       - haskell-ansi-terminal
+       - haskell-optparse-applicative
+       - haskell-unbounded-delays
+       - haskell-network
+       - haskell-network-uri
+       - haskell-async
+       - haskell-barbies
+       - haskell-concurrent-output
+       - haskell-erf
+       - haskell-lifted-async
+       - haskell-mmorph
+       - haskell-monad-control
+       - haskell-pretty-show
+       - haskell-resourcet
+       - haskell-safe-exceptions
+       - haskell-transformers-base
+       - haskell-wl-pprint-annotated
+       - haskell-tasty-expected-failure
+       - haskell-ansi-terminal-types
+       - haskell-colour
+       - haskell-prettyprinter-ansi-terminal
+       - haskell-prettyprinter
+       - haskell-transformers-compat
+       - haskell-th-compat
+       - haskell-test-framework
+       - haskell-test-framework-hunit
+       - haskell-distributive
+       - haskell-terminal-size
+       - haskell-constraints
+       - haskell-lifted-base
+       - happy
+       - haskell-lexer
+       - haskell-hspec
+       - haskell-unliftio-core
+       - haskell-void
+       - haskell-base-orphans
+       - haskell-doctest
+       - haskell-base-compat
+       - haskell-ansi-wl-pprint
+       - haskell-hostname
+       - haskell-old-locale
+       - haskell-regex-posix
+       - haskell-xml
+       - haskell-extensible-exceptions
+       - haskell-generic-deriving
+       - haskell-boring
+       - haskell-hspec-core
+       - haskell-hspec-expectations
+       - haskell-code-page
+       - haskell-ghc-paths
+       - haskell-prettyprinter-compat-ansi-wl-pprint
+       - haskell-regex-base
+       - haskell-th-abstraction
+       - haskell-quickcheck-io
+       - haskell-tf-random
+       - spirv-llvm-translator-18
+       - llvm-toolchain-18
+       - haskell-hspec-discover

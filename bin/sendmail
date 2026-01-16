@@ -1,0 +1,21 @@
+#!/bin/bash
+
+set -u
+set -e
+set -o pipefail
+
+line=
+subject=
+
+while IFS= read -r line; do
+	if [ -z "$line" ]; then
+		break;
+	fi
+	case "$line" in
+		"Subject: "* ) subject="${line#*: }" ;;
+	esac
+done
+
+msg="$subject"$'\n'"$(cat)"
+
+telegram-send --config "/srv/wanna-build/etc/telegram.conf" --format text "$msg"

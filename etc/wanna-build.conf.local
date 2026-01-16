@@ -19,7 +19,7 @@ $db_maint = "wb-team\@buildd.debian.org";
 $notforus_maint = "notforus\@buildd.debian.org";
 
 # mail address for logs of all state changes
-#$log_mail = "m68k-changes\@nocrew.org";
+$log_mail = "m68k-changes\@nocrew.org";
 
 # where to send wanna-build statistics mails
 $stat_mail = "wb-team\@buildd.debian.org";
@@ -34,6 +34,12 @@ $all_buildd_arch = "amd64";
 $dpkg_datadir = "/srv/wanna-build/etc/dpkg";
 
 @admin_users = qw(wbadm);
+
+$mailprog = "/srv/wanna-build/bin/sendmail";
+
+if (-r "$ENV{HOME}/wbconf.pl") {
+  require "$ENV{HOME}/wbconf.pl";
+}
 
 # don't remove this, Perl needs it:
 1;

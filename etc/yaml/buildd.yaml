@@ -1,235 +1,65 @@
-#
-# buildds for the main archive
-#
+- fiveclaws1:
+  - architecture: loong64
+  - filter:
+      deny:
+        - virt
+        - large-space
+        - small-nofile
+- pentaclaws2:
+  - architecture: loong64
+  - filter:
+      deny:
+        - virt
+        - large-space
+        - small-nofile
+- powerclaws3:
+  - architecture: loong64
+  - filter:
+      allow:
+        - virt
+        - large-space
+        - small-nofile
 
-- arm-conova-01:
-    - architecture: arm64 armhf armel
-- arm-conova-02:
-    - architecture: arm64 armhf armel
-- arm-conova-03:
-    - architecture: arm64 armhf armel
-- arm-conova-04:
-    - architecture: arm64 armhf armel
-- arm-ubc-01:
-    - architecture: arm64 armhf armel
-- arm-ubc-02:
-    - architecture: arm64 armhf armel
-- arm-ubc-03:
-    - architecture: arm64 armhf armel
-- arm-ubc-04:
-    - architecture: arm64 armhf armel
-- arm-ubc-05:
-    - architecture: arm64 armhf armel
-- arm-ubc-06:
-    - architecture: arm64 armhf armel
+- fiveclaws4:
+  - architecture: loong64 all
+  - filter:
+      deny:
+        - virt
+        - large-space
+        - small-nofile
+- pentaclaws5:
+  - architecture: loong64 all
+  - filter:
+      deny:
+        - virt
+        - large-space
+        - small-nofile
+- powerclaws6:
+  - architecture: loong64 all
+  - filter:
+      allow:
+        - virt
+        - large-space
+        - small-nofile
 
-- mipsel-conova-01:
-    - architecture: mipsel mips64el
-- mipsel-conova-02:
-    - architecture: mipsel mips64el
-- mipsel-osuosl-01:
-    - architecture: mipsel mips64el
-- mipsel-osuosl-02:
-    - architecture: mipsel mips64el
-- mipsel-osuosl-03:
-    - architecture: mipsel mips64el
-- mipsel-osuosl-04:
-    - architecture: mipsel mips64el
-- mipsel-osuosl-05:
-    - architecture: mipsel mips64el
-
-- ppc64el-conova-01:
-    - architecture: ppc64el
-- ppc64el-conova-02:
-    - architecture: ppc64el
-- ppc64el-osuosl-01:
-    - architecture: ppc64el
-- ppc64el-osuosl-02:
-    - architecture: ppc64el
-
-- rv-manda-01:
-    - architecture: riscv64
-- rv-manda-02:
-    - architecture: riscv64
-- rv-manda-03:
-    - architecture: riscv64
-- rv-manda-04:
-    - architecture: riscv64
-- rv-osuosl-01:
-    - architecture: riscv64
-- rv-osuosl-02:
-    - architecture: riscv64
-- rv-osuosl-03:
-    - architecture: riscv64
-- rv-osuosl-04:
-    - architecture: riscv64
-- rv-osuosl-05:
-    - architecture: riscv64
-
-- x86-csail-02:
-    - architecture: all
-- x86-grnet-02:
-    - architecture: all
-- x86-conova-01:
-    - architecture: all amd64 i386
-- x86-conova-02:
-    - architecture: all amd64 i386
-- x86-csail-01:
-    - architecture: amd64 i386
-- x86-grnet-01:
-    - architecture: amd64 i386
-- x86-grnet-03:
-    - architecture: all amd64 i386
-- x86-grnet-04:
-    - architecture: all amd64 i386
-- x86-ubc-01:
-    - architecture: amd64 i386
-- x86-ubc-02:
-    - architecture: amd64 i386
-
-- zandonai:
-    - architecture: s390x
-- zani:
-    - architecture: s390x
-
-#
-# buildds for the debian-ports archive
-#
-
-- alpha-sc-01:
-    - architecture: alpha
-- alpha-sc-02:
-    - architecture: alpha
-- alpha-sc-03:
-    - architecture: alpha
-- alpha-sc-04:
-    - architecture: alpha
-- imago:
-    - architecture: alpha
-- electro:
-    - architecture: alpha
-
-- atlas:
-    - architecture: hppa
-- c8000:
-    - architecture: hppa
-- mx3210:
-    - architecture: hppa
-- pacific:
-    - architecture: hppa
-- paco:
-    - architecture: hppa
-- panama:
-    - architecture: hppa
-- pad:
-    - architecture: hppa
-- paladin:
-    - architecture: hppa
-- paq:
-    - architecture: hppa
-- parisc:
-    - architecture: hppa
-- pasta:
-    - architecture: hppa
-- phantom:
-    - architecture: hppa
-
-- boralus:
-    - architecture: hurd-amd64
-- hurd-dbdd-tls-1:
-    - architecture: hurd-amd64
-- hurd-dbdd-tls-2:
-    - architecture: hurd-amd64
-
-- mozart:
-    - architecture: hurd-i386
-- bach:
-    - architecture: hurd-i386
-- ironforge:
-    - architecture: hurd-i386
-- rossini:
-    - architecture: hurd-i386
-- mahler:
-    - architecture: hurd-i386
-
-- loong64-loongson-01:
-    - architecture: loong64
-- loong64-loongson-02:
-    - architecture: loong64
-- loong64-loongson-03:
-    - architecture: loong64
-- loong64-loongson-04:
-    - architecture: loong64
-- loong64-loongson-05:
-    - architecture: loong64
-- loong64-loongson-06:
-    - architecture: loong64
-
-- ara5:
-    - architecture: m68k
-- mama:
-    - architecture: m68k
-- m68k-do-01:
-    - architecture: m68k
-- m68k-do-02:
-    - architecture: m68k
-- m68k-gandi-01:
-    - architecture: m68k
-- m68k-gandi-02:
-    - architecture: m68k
-- m68k-osuosl-01:
-    - architecture: m68k
-- m68k-osuosl-02:
-    - architecture: m68k
-- m68k-osuosl-03:
-    - architecture: m68k
-- m68k-osuosl-04:
-    - architecture: m68k
-
-- blaauw:
-    - architecture: ppc64 powerpc
-- kapitsa:
-    - architecture: ppc64 powerpc
-- debian-project-be-1:
-    - architecture: ppc64 powerpc
-- debian-project-be-2:
-    - architecture: ppc64 powerpc
-
-- sh4-do-01:
-    - architecture: sh4
-- sh4-do-02:
-    - architecture: sh4
-- sh4-gandi-01:
-    - architecture: sh4
-- sh4-gandi-02:
-    - architecture: sh4
-- sh4-osuosl-01:
-    - architecture: sh4
-- sh4-osuosl-02:
-    - architecture: sh4
-- sh4-osuosl-03:
-    - architecture: sh4
-- sh4-osuosl-04:
-    - architecture: sh4
-- tirpitz:
-    - architecture: sh4
-
-- landau:
-    - architecture: sparc64
-- nvg5120:
-    - architecture: sparc64
-- sompek:
-    - architecture: sparc64
-- raverin:
-    - architecture: sparc64
-- hertz:
-    - architecture: sparc64
-
-- frobozz:
-    - architecture: x32
-- vs76:
-    - architecture: x32
-- x32-do-01:
-    - architecture: x32
-- x32-do-02:
-    - architecture: x32
+- fiveclaws7:
+  - architecture: loong64 all
+  - filter:
+      deny:
+        - virt
+        - large-space
+        - small-nofile
+- pentaclaws8:
+  - architecture: loong64 all
+  - filter:
+      deny:
+        - virt
+        - large-space
+        - small-nofile
+- powerclaws9:
+  - architecture: loong64 all
+  - filter:
+      allow:
+        - virt
+        - large-space
+        - small-nofile
