@@ -992,7 +992,7 @@ sub set_one_binnmu {
 	}
 
 	my $fullver = binNMU_version($version,$binNMUver);
-	if ( version_lesseq( $fullver, $pkg->{'installed_version'} ) )
+	if ( $pkg->{'installed_version'} && version_lesseq( $fullver, $pkg->{'installed_version'} ) )
 	{
 		print "$name: binNMU $fullver is not newer than current version $pkg->{'installed_version'}\n";
 		return;
