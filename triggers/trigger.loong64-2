@@ -37,8 +37,9 @@ download_file(){
     if curl "${curl_opts[@]}" "$url/$path"; then
         if [ -e "$dest/$path.tmp" ]; then
             mv "$dest/$path.tmp" "$dest/$path"
+        else
+            echo "$url/$path unchanged" >&2
         fi
-    	echo "$url/$path unchanged" >&2
     else
         local rc=$?
         rm -f "$dest/$path.tmp"
