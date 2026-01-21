@@ -1,0 +1,11 @@
+[Unit]
+Description=Wanna-build trigger for %i
+ConditionPathExists=!/srv/wanna-build/NO-TRIGGERS
+ConditionFileIsExecutable=/srv/wanna-build/triggers/trigger.%i
+
+[Service]
+Type=oneshot
+ExecStart=/srv/wanna-build/triggers/trigger.%i
+WorkingDirectory=/srv/wanna-build
+User=wbadm
+Group=wbadm
