@@ -2,6 +2,8 @@
 Description=Wanna-build trigger for %i
 ConditionPathExists=!/srv/wanna-build/NO-TRIGGERS
 ConditionFileIsExecutable=/srv/wanna-build/triggers/trigger.%i
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 Type=oneshot
