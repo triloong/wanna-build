@@ -58,6 +58,7 @@ package-groups:
       - ceph
       - trilinos
       - rustc
+      - rustc-web
       - llvm-toolchain-22
     small-nofile:
       - python-pybedtools
