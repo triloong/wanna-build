@@ -145,7 +145,7 @@ main_sync() {
     ensure_lock
     ensure_workdir
 
-    download_repo "https://deb.debian.org/debian" "trixie" "main contrib non-free non-free-firmware" "all source" "${ARCHIVE_BASE}/master" ".gz"
+    download_repo "https://snapshot.debian.org/archive/debian/20251115T105528Z" "trixie" "main contrib non-free non-free-firmware" "all source" "${ARCHIVE_BASE}/master" ".gz"
     download_repo "http://deb.internal.apernet.io/builds1" "trixie" "main contrib non-free non-free-firmware" "loong64" "${ARCHIVE_BASE}/builds1" ".gz"
     download_repo "http://deb.internal.apernet.io/builds2" "trixie" "main contrib non-free non-free-firmware" "loong64 source all" "${ARCHIVE_BASE}/builds2" ".gz"
 
